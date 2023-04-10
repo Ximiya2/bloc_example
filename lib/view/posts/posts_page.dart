@@ -81,39 +81,36 @@ class _PostsPageState extends State<PostsPage> {
   Widget viewHome(List<PostModel>posts, bool isLoading) {
     return Stack(
       children: [
-        Padding(
-          padding: EdgeInsets.all(16),
-          child: ListView.builder(
-              itemBuilder: (context, index){
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 5, horizontal: 10),
-                  child: postItem(
-                    context: context,
-                    post: posts[index],
-                    edit: (){
-                      userIdCtr.text = posts[index].userId.toString();
-                      titleCtr.text = posts[index].title??'';
-                      bodyCtr.text = posts[index].body??'';
-                      _showBottomSheet(
-                          context,
-                              () async {
-                            if(userIdCtr.text.isNotEmpty && titleCtr.text.isNotEmpty && bodyCtr.text.isNotEmpty) {
-                              PostModel newPost = PostModel(
-                                  userId: int.parse(userIdCtr.text),
-                                  id: posts[index].id,
-                                  title: titleCtr.text,
-                                  body: bodyCtr.text
-                              );
-                              BlocProvider.of<PostCubit>(context).editPost(newPost);
-                            }
-                            Navigator.pop(context);
-                          });
-                    }
-                    ,),
-                );
-              }
-          ),
+        ListView.builder(
+            itemBuilder: (context, index){
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 10, horizontal: 15),
+                child: postItem(
+                  context: context,
+                  post: posts[index],
+                  edit: (){
+                    userIdCtr.text = posts[index].userId.toString();
+                    titleCtr.text = posts[index].title??'';
+                    bodyCtr.text = posts[index].body??'';
+                    _showBottomSheet(
+                        context,
+                            () async {
+                          if(userIdCtr.text.isNotEmpty && titleCtr.text.isNotEmpty && bodyCtr.text.isNotEmpty) {
+                            PostModel newPost = PostModel(
+                                userId: int.parse(userIdCtr.text),
+                                id: posts[index].id,
+                                title: titleCtr.text,
+                                body: bodyCtr.text
+                            );
+                            BlocProvider.of<PostCubit>(context).editPost(newPost);
+                          }
+                          Navigator.pop(context);
+                        });
+                  }
+                  ,),
+              );
+            }
         ),
         isLoading ?
         const Center(child: CircularProgressIndicator())

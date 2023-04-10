@@ -42,25 +42,37 @@ class _MainViewState extends State<MainView> {
       onTap: (index){
       BlocProvider.of<MainViewCubit>(context).upDateTab(index);
       },
-      type: BottomNavigationBarType.fixed,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      selectedItemColor: Colors.black,
+        backgroundColor: Colors.blueGrey,
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.black,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 15,
+            color: Colors.black
+        ),
+        unselectedLabelStyle: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 15,
+            color: Colors.grey
+        ),
       items: [
       BottomNavigationBarItem(
-      icon: Icon(Icons.home),
+      icon: Icon(Icons.photo),
       label: 'Photo'
       ),
       BottomNavigationBarItem(
-      icon: Icon(Icons.search),
+      icon: Icon(Icons.post_add),
       label: 'Posts'
       ),
       BottomNavigationBarItem(
-      icon: Icon(Icons.photo_album),
-    label: 'Commit'
+      icon: Icon(Icons.comment),
+    label: 'Comment'
     ),
         BottomNavigationBarItem(
-      icon: Icon(Icons.photo_album),
+      icon: Icon(Icons.supervised_user_circle_outlined),
     label: 'Users'
     ),
     ],

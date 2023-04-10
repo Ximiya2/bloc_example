@@ -9,8 +9,9 @@ class GetPostService {
 
   static Future<Either<String,List<PostModel>>> getPosts() async {
     try {
-      Response res =
-      await Dio().get(Urls.getPosts);
+      Response res = await Dio().get(
+          Urls.getPosts
+      );
       Log.i(res.data.toString());
       Log.i(res.statusCode.toString());
 

@@ -54,19 +54,26 @@ class _PhotoPageState extends State<PhotoPage> {
     );
   }
   Widget viewPhoto(List<PhotosModel>photos, bool isLoading) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: GridView.builder(
-        itemCount: photos.length,
-        gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
+    return Stack(
+      children: [
+        Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: GridView.builder(
+          itemCount: photos.length,
+          gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+          ),
+          itemBuilder: (context, index) {
+            return PhotoItem(
+              context,
+              photos[index],);
+          },
         ),
-        itemBuilder: (context, index) {
-          return PhotoItem(
-            context,
-            photos[index],);
-        },
       ),
+        isLoading ?
+        const Center(child: CircularProgressIndicator())
+            : const SizedBox()
+      ]
     );
   }
 }

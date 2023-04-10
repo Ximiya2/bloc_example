@@ -56,17 +56,24 @@ class _UsersPageState extends State<UsersPage> {
     );
   }
   Widget viewUsers(List<UsersModel>users, bool isLoading) {
-    return ListView.builder(
-        itemCount: users.length,
-        itemBuilder: (context, i){
-          return Padding(
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-            child: UsersItem(
-              context,
-              users[i]
-            ),
-          );
-        });
+    return Stack(
+      children: [
+        ListView.builder(
+          itemCount: users.length,
+          itemBuilder: (context, i){
+            return Padding(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              child: UsersItem(
+                context,
+                users[i]
+              ),
+            );
+          }),
+        isLoading ?
+        const Center(child: CircularProgressIndicator())
+            : const SizedBox()
+      ]
+    );
   }
 }
 

@@ -87,40 +87,47 @@ class _CommentPageState extends State<CommentPage> {
   }
 
   Widget viewComment(List<CommentModel>comment, bool isLoading) {
-    return ListView.builder(
-        itemCount: comment.length,
-        itemBuilder: (context, i){
-          return Padding(
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-            child: CommetItem(context: context,comment:  comment[i],
-                /*edit: () {
-                  commentIdCtr.text = snapshot.data![i].id.toString();
-                  nameCtr.text = snapshot.data![i].name;
-                  emailCtr.text = snapshot.data![i].email;
-                  bodyCtr.text = snapshot.data![i].body;
-                  _showBottomSheet(context,
-                          () async {
-                        if(nameCtr.text.isNotEmpty && emailCtr.text.isNotEmpty && bodyCtr.text.isNotEmpty) {
-                          CommentModel newComment = CommentModel(
-                            postId: snapshot.data![i].postId,
-                            id: snapshot.data![i].id,
-                            email: emailCtr.text,
-                            name: nameCtr.text,
-                            body: bodyCtr.text, );
-                          bool result = await GetCommetService.editComment(newComment);
-                          if(result){
-                            Utils.snackBarSucces('Update successfully', context);
-                            Navigator.pop(context);
+    return Stack(
+      children: [
+        ListView.builder(
+          itemCount: comment.length,
+          itemBuilder: (context, i){
+            return Padding(
+              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              child: CommetItem(context: context,comment:  comment[i],
+                  /*edit: () {
+                    commentIdCtr.text = snapshot.data![i].id.toString();
+                    nameCtr.text = snapshot.data![i].name;
+                    emailCtr.text = snapshot.data![i].email;
+                    bodyCtr.text = snapshot.data![i].body;
+                    _showBottomSheet(context,
+                            () async {
+                          if(nameCtr.text.isNotEmpty && emailCtr.text.isNotEmpty && bodyCtr.text.isNotEmpty) {
+                            CommentModel newComment = CommentModel(
+                              postId: snapshot.data![i].postId,
+                              id: snapshot.data![i].id,
+                              email: emailCtr.text,
+                              name: nameCtr.text,
+                              body: bodyCtr.text, );
+                            bool result = await GetCommetService.editComment(newComment);
+                            if(result){
+                              Utils.snackBarSucces('Update successfully', context);
+                              Navigator.pop(context);
+                            } else {
+                              Utils.snackBarError('Someting is wrong', context);
+                            }
                           } else {
-                            Utils.snackBarError('Someting is wrong', context);
+                            Utils.snackBarError('Please fill all fileds', context);
                           }
-                        } else {
-                          Utils.snackBarError('Please fill all fileds', context);
-                        }
-                      });
-                }*/),
-          );
-        });
+                        });
+                  }*/),
+            );
+          }),
+        isLoading ?
+        const Center(child: CircularProgressIndicator())
+            : const SizedBox()
+      ]
+    );
   }
 
 }

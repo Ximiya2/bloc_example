@@ -8,25 +8,25 @@ class Urls {
   static String editPost = '$baseUrl/posts/';
   static String deletePost = '$baseUrl/posts/';
 
-static const String getPhoto = '/photos';
-static const String getSinglePhoto = '/photos/';
-static const String getSingleUserPhoto = '/photos';
-static const String addPhoto = '/photos';
-static const String updatePhoto = '/photos/';
-static const String deletePhoto = '/photos/';
+static String getPhoto = '$baseUrl/photos';
+static String getSinglePhoto = '$baseUrl/photos/';
+static String getSingleUserPhoto = '$baseUrl/photos';
+static String addPhoto = '$baseUrl/photos';
+static String updatePhoto = '$baseUrl/photos/';
+static String deletePhoto = '$baseUrl/photos/';
 
-  static const String getComment = '/comments';
-  static const String getSingleComment = '/comments/';
-  static const String getSingleUserComment = '/comments';
-  static const String addComment = '/comments';
-  static const String updateComment = '/comments/';
-  static const String deleteComment = '/comments/';
+  static String getComment = '$baseUrl/comments';
+  static String getSingleComment = '$baseUrl/comments/';
+  static String getSingleUserComment = '$baseUrl/comments';
+  static String addComment = '$baseUrl/comments';
+  static String updateComment = '$baseUrl/comments/';
+  static String deleteComment = '$baseUrl/comments/';
 
-static const String getUsers = '/users';
-static const String getSingleUsers = '/users/';
-static const String addUsers = '/users';
-static const String updateUsers = '/users/';
-static const String deleteUsers = '/users/';
+static String getUsers = '$baseUrl/users';
+static String getSingleUsers = '$baseUrl/users/';
+static String addUsers = '$baseUrl/users';
+static String updateUsers = '$baseUrl/users/';
+static String deleteUsers = '$baseUrl/users/';
   //
 
   //

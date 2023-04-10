@@ -9,7 +9,9 @@ class GetUsersService {
 
   static Future<Either<String,List<UsersModel>>> getUsers() async {
     try {
-      Response res = await Dio().get(Urls.getUsers);
+      Response res = await Dio().get(
+          Urls.getUsers
+      );
       Log.i(res.data.toString());
       Log.i(res.statusCode.toString());
 
@@ -60,7 +62,7 @@ class GetUsersService {
   //   return null;
   // }
   //
-  // static Future<bool> createUsers(UsersModel newPost) async {
+  // static Future<bool> createUsers(UsersModel newUsers) async {
   //   try {
   //     Response res = await DioConfig.inheritentce.createRequest().post(
   //         Urls.getUsers,
